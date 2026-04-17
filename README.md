@@ -25,7 +25,7 @@ System Requirements:
 
 Instructions for Use:
 1. Download all files from this repository into a single local directory (which will serve as your Working Directory).
-2. Open R or RStudio and set your Working Directory to that extracted folder.
+2. Open R or RStudio and set your Working Directory to that downloaded folder.
    (e.g., `setwd("path/to/extracted/folder")`)
 3. Load the calculator function by running:
    `source("Phenotype_Calculator.R")`
