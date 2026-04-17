@@ -24,7 +24,7 @@ System Requirements:
 - Required R packages: `ggplot2` (for visualization), `readxl` (for reading the example file)
 
 Instructions for Use:
-1. Extract ALL files from this .zip archive into a single, local directory.
+1. Download all files from this repository into a single local directory (which will serve as your Working Directory).
 2. Open R or RStudio and set your Working Directory to that extracted folder.
    (e.g., `setwd("path/to/extracted/folder")`)
 3. Load the calculator function by running:
