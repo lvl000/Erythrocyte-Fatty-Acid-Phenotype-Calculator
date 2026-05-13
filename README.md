@@ -1,5 +1,5 @@
 # Erythrocyte-Fatty-Acid-Phenotype-Calculator
-Supplement 2 for manuscript: "Erythrocyte Fatty Acid Phenotypes and Quality of Life Trajectories in Cancer Survivors"
+Supplement 2 for manuscript: "Erythrocyte fatty acid phenotypes and longitudinal quality-of-life trajectories in long-term cancer survivors"
 
 Overview:
 This archive contains the necessary R scripts, core reference parameters, and a sample dataset to execute the Phenotype Calculator described in the manuscript. 
