@@ -1,29 +1,36 @@
 # Erythrocyte-Fatty-Acid-Phenotype-Calculator
-Supplement 2 for manuscript: "Erythrocyte fatty acid phenotypes and longitudinal quality-of-life trajectories in long-term cancer survivors"
 
-Overview:
-This archive contains the necessary R scripts, core reference parameters, and a sample dataset to execute the Phenotype Calculator described in the manuscript. 
-This tool allows researchers and clinicians to project new, external red blood cell (RBC) fatty acid profiles onto the established baseline metabolic territories.
+Supplement 2 for the manuscript: "Erythrocyte fatty acid phenotypes and longitudinal quality-of-life trajectories in long-term cancer survivors"
 
-⚠️ CRITICAL REQUIREMENT (RBC vs. Plasma):
-1. RBC Profiles Only (No Plasma/Serum): > This calculator is strictly calibrated for Red Blood Cell (RBC) membrane fatty acid profiles, which reflect long-term (approx. 120 days) dietary intake and metabolic homeostasis. It MUST NOT be applied to plasma or serum fatty acid data (which reflect short-term/recent meals), as this will result in severe misclassification.
-2. Compositional Data Format (Fractional Scale):
-Input data MUST be provided as relative abundance (decimals), as the calculator is strictly calibrated for a fractional scale (0.0–1.0). While the standard input format uses decimals (e.g., 0.015 for 1.5%), the internal engine features a smart interceptor that automatically detects and rescales data containing percentage signs (e.g., "1.5%" is rescaled to 0.015). However, it is STRICTLY PROHIBITED to input whole-number percentages without a percentage sign (e.g., entering 1.5 to represent 1.5%); doing so will cause a 100-fold scale error.
+## Overview
 
-Contents of this Archive:
+This repository contains the R script, core reference parameters, and example dataset required to run the Erythrocyte Fatty Acid Phenotype Calculator described in the manuscript. The tool supports reproducible phenotype assignment in external research cohorts by projecting new erythrocyte fatty acid profiles into the fixed baseline phenotype space.
+
+## Important input requirements
+
+### Erythrocyte profiles only
+
+This calculator was calibrated using erythrocyte membrane fatty acid profiles. It should not be applied to plasma or serum fatty acid data, because those matrices reflect different biological time windows and may produce invalid phenotype assignments.
+
+### Compositional data format
+
+Input data should be provided as relative abundances on a fractional scale, with fatty acid values summing approximately to 1.0. For example, 1.5% should be entered as 0.015.
+
+The calculator can automatically detect and rescale values containing percentage signs, such as "1.5%". Whole-number percentages without a percentage sign, such as 1.5 to represent 1.5%, should not be used. If such values are detected, users should rescale the data before running the calculator.
+
+## Contents of this repository:
 1. Phenotype_Calculator.R
    The executable R script containing the `predict_phenotype()` function.
 2. Anonymous_Phenotype_Core.RData
    The serialized core parameter file containing the baseline PCA rotation matrix, cluster centroids, 99% distance rejection thresholds, and fallback zero-imputation limits.
 3. example_validation_cohort.xlsx
-   A desensitized, representative sample dataset (N=12) demonstrating various 
-   phenotype assignments and outlier detection.
+   A de-identified example dataset (N=12) demonstrating phenotype assignment and outlier detection.
 
-System Requirements:
+### System Requirements:
 - R (version 4.3.3 or higher recommended)
 - Required R packages: `ggplot2` (for visualization), `readxl` (for reading the example file)
 
-Instructions for Use:
+### Instructions for Use:
 1. Download all files from this repository into a single local directory (which will serve as your Working Directory).
 2. Open R or RStudio and set your Working Directory to that downloaded folder.
    (e.g., `setwd("path/to/extracted/folder")`)
@@ -37,10 +44,10 @@ Instructions for Use:
    `head(result$Data)`  # Displays the classification results and PC coordinates
    `print(result$Plot)` # Renders the 2D Phenotype Projection Map
 
-Input Data Format Requirements:
-- The input dataframe must contain an 'ID' column.
-- Smart Scaling for "%": The calculator features a smart interceptor for percentage signs. If your clinical data contains the "%" symbol (e.g., "1.5%"), the tool will automatically strip the character and convert the value to the required fractional scale (0.015) for accurate PCA projection.
-- Numeric Consistency: If no percentage sign is present, the values must already be in decimal format (summing to approximately 1.0). Pure numeric inputs greater than 1.0 (without a "%" sign) will be treated as raw values and lead to erroneous results.
+### Input Data Format Requirements:
+- An ID column is recommended. If no ID column is provided, row numbers will be used as profile identifiers.
+- Percentage signs: The calculator automatically detects values containing percentage signs. If your input data contains the "%" symbol (e.g., "1.5%"), the tool will automatically strip the character and convert the value to the required fractional scale (0.015) for accurate PCA projection.
+- Numeric Consistency: Whole-number percentages without a percentage sign, such as 1.5 to represent 1.5%, should not be used because they are interpreted as fractional-scale inputs.
 - Zero values are automatically imputed using a batch-adaptive algorithm to account for multi-center limits of detection (LOD).
 - REQUIRED VARIABLES: The input data must contain the following 29 specific fatty acid variables (column names are case-insensitive and can use either colons or underscores, e.g., C16:0 or c16_0):
   1. C14:0 (myristic acid)
@@ -73,6 +80,5 @@ Input Data Format Requirements:
   28. C24:0 (lignoceric acid)
   29. C24:1n9 (nervonic acid)
 
-Methodological Details:
+### Methodological Details:
 For a comprehensive explanation of the mathematical framework, please refer to "eMethods 3" in the Supplementary Appendix associated with the manuscript.
-================================================================================
