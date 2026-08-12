@@ -1,16 +1,16 @@
-# Erythrocyte-Fatty-Acid-Phenotype-Calculator
+# Whole-Blood-Fatty-Acid-Phenotype-Calculator
 
-Supplement 2 for the manuscript: "Erythrocyte fatty acid phenotypes and longitudinal quality-of-life trajectories in long-term cancer survivors"
+Supplement 2 for the manuscript: "Whole-blood fatty acid phenotypes and longitudinal quality-of-life trajectories in long-term cancer survivors"
 
 ## Overview
 
-This repository contains the R script, core reference parameters, and example dataset required to run the Erythrocyte Fatty Acid Phenotype Calculator described in the manuscript. The tool supports reproducible phenotype assignment in external research cohorts by projecting new erythrocyte fatty acid profiles into the fixed baseline phenotype space.
+This repository contains the R script, core reference parameters, and example dataset required to run the Whole-Blood Fatty Acid Phenotype Calculator described in the manuscript. The tool supports reproducible phenotype assignment in external research cohorts by projecting new whole-blood fatty acid profiles into the fixed baseline phenotype space.
 
 ## Important input requirements
 
-### Erythrocyte profiles only
+### Whole-blood profiles only
 
-This calculator was calibrated using erythrocyte membrane fatty acid profiles. It should not be applied to plasma or serum fatty acid data, because those matrices reflect different biological time windows and may produce invalid phenotype assignments.
+This calculator was developed using whole-blood fatty acid profiles measured from dried blood spot samples. It is intended for application to whole-blood fatty acid data generated using a comparable analytical workflow. It should not be applied directly to plasma, serum, or other analytical matrices, because matrix-specific differences in fatty acid composition may result in inappropriate phenotype assignments.
 
 ### Compositional data format
 
