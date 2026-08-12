@@ -1,6 +1,6 @@
 # Whole-Blood-Fatty-Acid-Phenotype-Calculator
 
-Supplement 2 for the manuscript: "Whole-blood fatty acid phenotypes and longitudinal quality-of-life trajectories in long-term cancer survivors"
+Supplement 2 for the manuscript: "Whole-blood fatty acid phenotypes and subsequent quality-of-life changes among cancer survivors"
 
 ## Overview
 
