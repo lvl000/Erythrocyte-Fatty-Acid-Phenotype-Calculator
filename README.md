@@ -48,7 +48,7 @@ The calculator can automatically detect and rescale values containing percentage
 - An ID column is recommended. If no ID column is provided, row numbers will be used as profile identifiers.
 - Percentage signs: The calculator automatically detects values containing percentage signs. If your input data contains the "%" symbol (e.g., "1.5%"), the tool will automatically strip the character and convert the value to the required fractional scale (0.015) for accurate PCA projection.
 - Numeric Consistency: Whole-number percentages without a percentage sign, such as 1.5 to represent 1.5%, should not be used because they are interpreted as fractional-scale inputs.
-- Zero values are automatically imputed using a batch-adaptive algorithm to account for multi-center limits of detection (LOD).
+- Zero values are automatically imputed using half the minimum nonzero value observed within the external dataset, with baseline half-minimum values used as fallback when no positive value is available for a required fatty acid.
 - REQUIRED VARIABLES: The input data must contain the following 29 specific fatty acid variables (column names are case-insensitive and can use either colons or underscores, e.g., C16:0 or c16_0):
   1. C14:0 (myristic acid)
   2. C15:0 (pentadecanoic acid)
